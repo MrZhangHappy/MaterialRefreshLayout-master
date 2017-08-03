@@ -27,4 +27,5 @@ dependencies {
 //    compile 'com.cjj.materialrefeshlayout:library:1.3.0'
     compile 'com.android.support:recyclerview-v7:23.1.1'
     compile 'com.android.support:cardview-v7:23.1.1'
+    compile 'com.github.MrZhangHappy:OpenSourceDemo:v1.4'
 }

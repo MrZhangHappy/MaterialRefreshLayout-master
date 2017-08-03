@@ -7,6 +7,7 @@ import android.widget.Toast;
 
 import com.cjj.MaterialRefreshLayout;
 import com.cjj.MaterialRefreshListener;
+import com.zkk.opensourcelibrary.ToastUtils;
 
 /**
  * Created by Administrator on 2015/9/10.
@@ -38,7 +39,7 @@ public class ScrollViewActivity extends BaseActivity implements View.OnClickList
 
             @Override
             public void onfinish() {
-                Toast.makeText(ScrollViewActivity.this, "finish", Toast.LENGTH_LONG).show();
+                ToastUtils.showToast(ScrollViewActivity.this,"finish");
             }
         });
     }
