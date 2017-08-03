@@ -46,7 +46,13 @@ public class AutoRefreshActivity extends BaseActivity {
             }
 
             @Override
-            public void onRefreshLoadMore(MaterialRefreshLayout materialRefreshLayout) {
+            public void onRefreshLoadMore(final MaterialRefreshLayout materialRefreshLayout) {
+                materialRefreshLayout.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        materialRefreshLayout.finishRefreshLoadMore();
+                    }
+                },3000);
                 Toast.makeText(AutoRefreshActivity.this, "load more", Toast.LENGTH_LONG).show();
             }
         });
