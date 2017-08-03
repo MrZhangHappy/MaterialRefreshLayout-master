@@ -1,55 +1,58 @@
-[![Android Gems](http://www.android-gems.com/badge/android-cjj/Android-MaterialRefreshLayout.svg?branch=master)](http://www.android-gems.com/lib/android-cjj/Android-MaterialRefreshLayout)
+[![Android Gems](http://www.android-gems.com/badge/android-cjj/Android-MaterialRefreshLayout.svg?branch=master)](http://www.android-gems.com/lib/android-cjj/Android-MaterialRefreshLayout) [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-MaterialRefreshLayout-brightgreen.svg?style=flat)](http://www.android-arsenal.com/details/1/2492)
+[中文版文档](https://github.com/android-cjj/Android-MaterialRefreshLayout/blob/master/README-cn.md)
+--------------------------------------------
 
-MaterialRefreshLayout v1.4.0
+MaterialRefreshLayout v1.3.0
 ==================================
-这是一个下拉刷新控件，它比SwipeRefreshLayout更漂亮和强大，使用也比较简单。支持android 3.0 以上。希望你喜欢，呵呵。
+This is a drop-down refresh control, it is more beautiful and powerful than SwipeRefreshLayout.It is easy to use and support API LEVEL >= 11 . I hope you like it !
+![](http://www.apkbus.com/data/attachment/forum/201509/11/095859kp297mjmj2php5pm.jpg)
 
-
-现在让我来说说他有多牛逼的功能吧，其实也就那样......gif图录制的很奇怪，建议真机查看，啊哈哈哈
+Now let me talk about MaterialRefreshLayout of function
 ---------------------------------------------------------------------------
-(1)如果你喜欢官方的刷新效果，没问题，它也可以做到，这是一种侵入式的下拉刷新
-
-![](https://github.com/android-cjj/Android-MaterialRefreshLayout/blob/master/gif%2Fcjj2.gif)
-
-(2)然而，有些人并不喜欢侵入刷新，或者说，需求需要的是非侵入刷新，没问题，同时，觉得上面的效果太单调了，好的，我们可以加个波浪形状的背景，就像下图所示
-
-![](https://github.com/android-cjj/Android-MaterialRefreshLayout/blob/master/gif%2Fcjj1.gif)
-
-(3)如果这时候你想要侵入式的刷新，又要有波浪背景，也就是所有效果覆盖在内容之上的话，没问题，它还是可以做到的，呵呵......
-
-![](https://github.com/android-cjj/Android-MaterialRefreshLayout/blob/master/gif%2Fcjj3.gif)
-
-(4)我知道你需要加载更多，本人还是不建议两者一起，你可以用这个，两者去组合[RecyclerViewWithFooter](https://github.com/android-cjj/Android-RecyclerViewWithFooter)，当然，这里也写了。
-
-![](https://github.com/android-cjj/Android-MaterialRefreshLayout/blob/master/gif%2Fcjj4.gif)
-
-(5)自动下拉刷新也是很多人需要的，比如下图所示，当然也做了自动上拉刷新，具体看源码
-
-![](https://github.com/android-cjj/Android-MaterialRefreshLayout/blob/master/gif%2Fcjj5.gif)
-
-
-(6)看久了你如果讨厌的话，我还增加了一种样式，如下图：
+add a lovely sun
 
 ![](https://github.com/android-cjj/Android-MaterialRefreshLayout/blob/master/gif%2Fcjj6.gif)
 
-(7)如果需要覆盖的，也可以.......
+(1)It can be done like SwipeRefreshLayout drop-down refresh effect,this is a kind of intrusive drop-down refresh.
 
-![](https://github.com/android-cjj/Android-MaterialRefreshLayout/blob/master/gif%2Fcjj7.gif)
+![](http://www.apkbus.com/data/attachment/forum/201509/10/145037bwzigoghgrk414hw.gif)
 
 
-用法
+(2)However, there are some people who are not as like invasive drop-down refresh, so, it also has a non-invasive drop-down refresh function.
+
+![](http://www.apkbus.com/data/attachment/forum/201509/10/145142fp1z3fp0hkx0apg3.gif)
+
+
+(3)If you feel too drab, we can add a background of the wave shape.
+
+![](http://www.apkbus.com/data/attachment/forum/201509/10/144913t3beqg3eics1xwwr.gif)
+
+
+(4)If you want to make waveform covering on content, it can be done.
+
+![](http://www.apkbus.com/data/attachment/forum/201509/10/144736ah8xaeamz155zq54.gif)
+
+
+(5)if you like the most simple effect,You can see the image below.
+
+![](http://www.apkbus.com/data/attachment/forum/201509/10/145326ttfgttgm3gg68tgf.gif)
+
+(6)MaterialRefreshLayout Can pull load more, drop-down refresh automatically, pull up refresh automatically.
+
+(7)There are a lot of functions, you can see the source code...
+
+Usage
 =================================================
 
-AS添加依赖库，这样就不用导入整个library库,Eclipse的用户导入library库,慢慢折腾吧！（因为我觉得如果不是环境不允许你用as的话,还是放弃eclipse吧，毕竟github上很多优秀的项目都是用as的，好吧我多嘴了...）
+Add dependency.
 
-1.4版本的bug比较少，功能还行，你直接导入library，想改什么就改什么了，
 ```
 dependencies {
-    compile 'com.cjj.materialrefeshlayout:library:1.3.0'//不建议在as直接导入这个  bug 多  还是直接用library ,自己修改也方便
+    compile 'com.cjj.materialrefeshlayout:library:1.3.0'
 }
 ```
 
-在你的layout xml.添加下面的代码
+Use it in your layout xml.
 ```xml
 <com.cjj.MaterialRefreshLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
@@ -62,35 +65,35 @@ dependencies {
 
 </com.cjj.MaterialRefreshLayout>
 ```
-实例化它并设置监听，onrefresh是必须实现的，其他都是方法可选，为了代码可读性而设计......
+Get instance and use it.
 ```java
  materialRefreshLayout = (MaterialRefreshLayout) findViewById(R.id...);
  materialRefreshLayout.setMaterialRefreshListener(new MaterialRefreshListener() {
       @Override
       public void onRefresh(final MaterialRefreshLayout materialRefreshLayout) {
-          //下拉刷新...
+          //refreshing...
       }
-      
+
        @Override
        public void onRefreshLoadMore(MaterialRefreshLayout materialRefreshLayout) {
-       	  //上拉刷新...
+       	  //load more refreshing...
        }
   }
-  
-// 结束下拉刷新...
+
+// refresh complete
 materialRefreshLayout.finishRefresh();
 
-// 结束上拉刷新...
+// load more refresh complete
  materialRefreshLayout.finishRefreshLoadMore();
 ```
 
-配置
+Config
 =============
-(1)如果你喜欢官方的刷新效果
+(1)if you like SwipeRefreshLayout drop-down refresh effect
 
 ![](http://www.apkbus.com/data/attachment/forum/201509/10/171338y8ufsxjrs7k2rxu3.jpg)
 
-在xml中, 设置以下属性
+In xml, use attributes.
 ```xml
 <com.cjj.MaterialRefreshLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
@@ -102,17 +105,17 @@ materialRefreshLayout.finishRefresh();
     app:wave_show="false"
     >
 ```
-在代码中是这样的：
+In java code.
 ```java
 materialRefreshLayout.setIsOverLay(true);
 materialRefreshLayout.setWaveShow(false);
 ```
 
-(2)如果你喜欢非侵入刷新
+(2)if you like non-invasive drop-down refresh effect
 
 ![](http://www.apkbus.com/data/attachment/forum/201509/10/171336i3x75d7x4tadxezt.jpg)
 
-在xml中, 设置以下属性
+In xml, use attributes.
 ```xml
 <com.cjj.MaterialRefreshLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
@@ -124,16 +127,16 @@ materialRefreshLayout.setWaveShow(false);
     app:wave_show="false"
     >
 ```
-在代码中是这样的：
+In java code.
 ```java
 materialRefreshLayout.setIsOverLay(false);
 materialRefreshLayout.setWaveShow(false);
 ```
-(3)如果你觉得上面的效果太单调了，加个波浪形状的背景，就像下图所示
+(3)if you like add a background of the wave shape.
 
 ![](http://www.apkbus.com/data/attachment/forum/201509/10/171339lvhk3n3h4wkgkgdc.jpg)
 
-在xml中, 设置以下属性
+In xml, use attributes.
 ```xml
 <com.cjj.MaterialRefreshLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
@@ -147,13 +150,13 @@ materialRefreshLayout.setWaveShow(false);
     app:wave_height_type="normal"  (higher)
     >
 ```
-在java代码中是这样的：
+In java code.
 ```java
 materialRefreshLayout.setWaveColor(0xffffffff);
 materialRefreshLayout.setIsOverLay(false);
 materialRefreshLayout.setWaveShow(true);
 ```
-(4)你想要侵入式的刷新，又要有波浪背景，也就是所有效果覆盖在内容之上
+(4)If you want to make waveform covering on content
 
 ![](http://www.apkbus.com/data/attachment/forum/201509/10/171334xtd0xphsag4ww4gs.jpg)
 
@@ -171,14 +174,14 @@ materialRefreshLayout.setWaveShow(true);
     app:wave_height_type="higher"
     >
 ```
-在java代码中是这样的：
+In java code.
 ```java
 materialRefreshLayout.setWaveColor(0xf90fffff);
 materialRefreshLayout.setIsOverLay(true);
 materialRefreshLayout.setWaveShow(true);
 ```
 
-(5)其他...
+(5)other...
 
 ![](http://www.apkbus.com/data/attachment/forum/201509/10/171341xrgamch93mad4pcg.jpg)
 
@@ -197,7 +200,7 @@ materialRefreshLayout.setWaveShow(true);
     >
 ```
 
-(6)上拉加载更多...
+(6)add pull up loading more features...
 
 ![](http://www.apkbus.com/data/attachment/forum/201509/16/180340xypx76ypefpdzfrf.png)
 
@@ -212,14 +215,14 @@ materialRefreshLayout.setWaveShow(true);
     >
 
 ```
-在java代码中是这样的：
+In java code.
 ```java
        materialRefreshLayout.setLoadMore(true);
 ```
 
-(7)自动下拉刷新，自动上拉刷新.
+(7) It can drop-down refresh automatically and pull up refresh automatically.
 
-在java代码中是这样的：
+In java code.
 ```java
        materialRefreshLayout.autoRefresh();//drop-down refresh automatically
         materialRefreshLayout.autoRefreshLoadMore();// pull up refresh automatically
@@ -228,43 +231,36 @@ materialRefreshLayout.setWaveShow(true);
 
 V 1.3.0
 ===========================
-添加自动下拉刷新，自动上拉刷新.
+add drop-down refresh automatically and pull up refresh automatically
 
 V 1.2.1
 ===========================
-添加上拉加载更多...
+add pull up loading more features
 
 V 1.2.0
 ===========================
-添加了可设置加载圆圈的大小，有两种模式可以选择，在xml配置属性app:progress_size_type="normal"(big)和修复一些bug 
+add progress size type ,you can use xml attr to set app:progress_size_type="normal"(big) and fix some bugs
 
 V 1.1.0
 ===========================
-一个全新的动画展示效果，减小了库的大小，很不幸的从支持api 8 升到 api 11 不过，也没多少人用2.x.x的手机了......
+a new way to perform animations with support library, the library size and the amount of libraries decreased.
 
-V 1.0.0
+
+AT LAST
 ===================================================================
-支持api 8，第一版本，啊哈哈......
+If the MaterialRefreshLayout has failed to meet to your requirements, you can go to the [BeautifulRefreshLayout](https://github.com/android-cjj/BeautifulRefreshLayout) to find what you need.
 
-最后
-===================================================================
-如果这些都没能满足你的需求的话，没问题，你可以去看看[BeautifulRefreshLayout](https://github.com/android-cjj/BeautifulRefreshLayout)，我想，你可以找到一个专属于你的人...错了...是下拉刷新......
-
-在GitHub follow 我就是对我最大的支持，呵呵:
+If you want to support me,you can follow me on GitHub:
 [https://github.com/android-cjj](https://github.com/android-cjj).
 
-
-[关于我](http://android-cjj.github.io/)
+[About me](http://android-cjj.github.io/)
 ------------------------------------
 
-感谢
+Thanks
 ============================================
 
 [lsjwzh/MaterialLoadingProgressBar](https://github.com/lsjwzh/MaterialLoadingProgressBar)
 
-随意说说
------------------------------
-刚建了个[github小伙伴交流群](http://t.cn/RyiVjnv)(477826523),有兴趣的朋友可以加进来的...小小要求：github有至少7个关注者或者开源库有7颗星星的...
 
 License
 =======
